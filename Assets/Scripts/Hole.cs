@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Hole : MonoBehaviour {
 
+	public GameObject worldMesh;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -13,10 +15,11 @@ public class Hole : MonoBehaviour {
 	
 	}
 
-	void OnCollisionEnter (Collision col) {
+	void OnTriggerEnter (Collider col) {
 		var obj = col.gameObject;
 		if (obj.GetComponent<Ball>() != null) {
-			obj.GetComponent<Ball>().Reset();
+			Physics.IgnoreCollision (worldMesh.GetComponent<Collider> (), obj.GetComponent<Collider> ());
+			// obj.GetComponent<Ball>().Reset();
 		}
 	}
 }
