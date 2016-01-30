@@ -19,7 +19,8 @@ public class Hole : MonoBehaviour {
 	void OnTriggerEnter (Collider col) {
 		var obj = col.gameObject;
 		if (obj.GetComponent<Ball>() != null) {
-			Physics.IgnoreCollision (GameObject.FindWithTag("floor").GetComponent<Collider>(), obj.GetComponent<Collider> ());
+			obj.GetComponent<Rigidbody> ().velocity = Vector3.zero;
+			Physics.IgnoreCollision (GameObject.FindWithTag("floor").GetComponent<Collider>(), obj.GetComponent<Collider> (), true);
 			light.GetComponent<Light> ().color = Color.green;
 			door.SetActive (true);
 		}
