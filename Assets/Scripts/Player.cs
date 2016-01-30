@@ -19,8 +19,8 @@ public class Player : MonoBehaviour
 	void Update ()
 	{
 		var cur = cursor.transform;
-		var cursorXpos = cur.localPosition.x + Input.GetAxis ("Mouse X");
-		var cursorZpos = cur.localPosition.z + Input.GetAxis ("Mouse Y");
+		var cursorXpos = cur.localPosition.x + Input.GetAxis ("Mouse X") * 0.5f;
+		var cursorZpos = cur.localPosition.z + Input.GetAxis ("Mouse Y") * 0.5f;
 		cur.localPosition = new Vector3 (cursorXpos, 0, cursorZpos).normalized * 1.25f;
 
 		if (Input.GetKeyDown(KeyCode.Mouse0)) {
