@@ -16,27 +16,37 @@ public class Player : MonoBehaviour
 		if (!canBomb) {
 			GameObject.Find ("cursor").SetActive (false);
 		}
+		cursor.transform.parent = null;
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
 		var cur = cursor.transform;
-		var cursorXpos = cur.localPosition.x + Input.GetAxis ("Mouse X") * 0.5f;
-		var cursorZpos = cur.localPosition.z + Input.GetAxis ("Mouse Y") * 0.5f;
-		cur.localPosition = new Vector3 (cursorXpos, 0, cursorZpos).normalized * 1.25f;
+		var cursorpos = transform.InverseTransformPoint (cur.position);
+		cursorpos.x = cursorpos.x + Input.GetAxis ("Mouse X") * 0.2f;
+		cursorpos.z = cursorpos.z + Input.GetAxis ("Mouse Y") * 0.2f;
+		var loc_cursorpos  = new Vector3 (cursorpos.x, 0, cursorpos.z).normalized;
+		var world_cursorpos = transform.TransformPoint (loc_cursorpos);
+		cur.position = world_cursorpos;
+
+		if (GetComponent<Rigidbody> ().velocity.sqrMagnitude < 0.000005f) {
+			transform.LookAt (cur);
+		}
 
 		if (Input.GetKeyDown(KeyCode.Mouse0) && canBomb) {
 			var obj = Instantiate(bomb, cursor.transform.position, Quaternion.identity) as GameObject;
-			obj.GetComponent<Rigidbody> ().velocity = new Vector3 (cur.localPosition.x, 0, cur.localPosition.z) * 10.0f;
+			obj.transform.rotation = transform.rotation;
+			obj.GetComponent<Rigidbody> ().velocity = transform.position + transform.InverseTransformPoint(cur.position) * 10.0f;;
 		}
+			
 	}
 
 	void FixedUpdate ()
 	{
 		var movDelta = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical")) * speed;
 		var t = this.GetComponent<Transform> ();
-		t.Translate (movDelta);
+		transform.position = new Vector3 (transform.position.x + movDelta.x, transform.position.y, transform.position.z + movDelta.z); 
 	}
 
 

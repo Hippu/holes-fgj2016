@@ -771,11 +771,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 475816, guid: 39ca34f3f9d56429eb51d5f157cae32a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -8.84
+      value: -7.821
       objectReference: {fileID: 0}
     - target: {fileID: 475816, guid: 39ca34f3f9d56429eb51d5f157cae32a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.734
       objectReference: {fileID: 0}
     - target: {fileID: 475816, guid: 39ca34f3f9d56429eb51d5f157cae32a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -805,7 +805,20 @@ Prefab:
       propertyPath: m_Name
       value: player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2398704, guid: 39ca34f3f9d56429eb51d5f157cae32a, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495868, guid: 39ca34f3f9d56429eb51d5f157cae32a, type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2398704, guid: 39ca34f3f9d56429eb51d5f157cae32a, type: 2}
+    - {fileID: 6475518, guid: 39ca34f3f9d56429eb51d5f157cae32a, type: 2}
+    - {fileID: 6488454, guid: 39ca34f3f9d56429eb51d5f157cae32a, type: 2}
+    - {fileID: 6473470, guid: 39ca34f3f9d56429eb51d5f157cae32a, type: 2}
+    - {fileID: 6420842, guid: 39ca34f3f9d56429eb51d5f157cae32a, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 39ca34f3f9d56429eb51d5f157cae32a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1861175813
