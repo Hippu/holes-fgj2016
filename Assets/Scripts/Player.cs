@@ -7,12 +7,15 @@ public class Player : MonoBehaviour
 	public float speed = 1.0f;
 	public GameObject cursor;
 	public GameObject bomb;
+	public bool canBomb;
 
 
 	// Use this for initialization
 	void Start ()
 	{
-
+		if (!canBomb) {
+			GameObject.Find ("cursor").SetActive (false);
+		}
 	}
 
 	// Update is called once per frame
@@ -23,7 +26,7 @@ public class Player : MonoBehaviour
 		var cursorZpos = cur.localPosition.z + Input.GetAxis ("Mouse Y") * 0.5f;
 		cur.localPosition = new Vector3 (cursorXpos, 0, cursorZpos).normalized * 1.25f;
 
-		if (Input.GetKeyDown(KeyCode.Mouse0)) {
+		if (Input.GetKeyDown(KeyCode.Mouse0) && canBomb) {
 			var obj = Instantiate(bomb, cursor.transform.position, Quaternion.identity) as GameObject;
 			obj.GetComponent<Rigidbody> ().velocity = new Vector3 (cur.localPosition.x, 0, cur.localPosition.z) * 10.0f;
 		}
