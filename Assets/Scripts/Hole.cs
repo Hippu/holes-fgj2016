@@ -4,6 +4,7 @@ using System.Collections;
 public class Hole : MonoBehaviour {
 
 	public GameObject light;
+	public GameObject door;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,7 @@ public class Hole : MonoBehaviour {
 		if (obj.GetComponent<Ball>() != null) {
 			Physics.IgnoreCollision (GameObject.FindWithTag("floor").GetComponent<Collider>(), obj.GetComponent<Collider> ());
 			light.GetComponent<Light> ().color = Color.green;
+			door.SetActive (true);
 		}
 	}
 }

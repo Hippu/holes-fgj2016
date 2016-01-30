@@ -18,6 +18,11 @@ public class Ball : MonoBehaviour
 		if (transform.position.y < -50.0f) {
 			this.Reset();
 		}
+
+		if (transform.position.y > 2) {
+			var rb = gameObject.GetComponent<Rigidbody> ();
+			rb.velocity = new Vector3 (rb.velocity.x, 0, rb.velocity.z);
+		}
 	}
 
 	public void Reset ()
