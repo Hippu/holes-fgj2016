@@ -14,4 +14,10 @@ public class Bomb : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	void OnCollisionEnter (Collision col) {
+		if (col.gameObject.GetComponent<Ball>() != null) {
+			Destroy (this.gameObject);
+		}
+	}
 }

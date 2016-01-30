@@ -25,6 +25,6 @@ public class Ball : MonoBehaviour
 		this.transform.localPosition = origLocation;
 		GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		GetComponent<Rigidbody> ().angularVelocity = Vector3.zero;
-		Physics.IgnoreCollision(GetComponent<Collider>(), GameObject.FindWithTag("world").GetComponent<Collider>(), false);
+		Physics.IgnoreCollision(GetComponent<Collider>(), GameObject.FindWithTag("floor").GetComponent<Collider>(), false);
 	}
 }

@@ -21,19 +21,7 @@ public class Player : MonoBehaviour
 		var cur = cursor.transform;
 		var cursorXpos = cur.localPosition.x + Input.GetAxis ("Mouse X");
 		var cursorZpos = cur.localPosition.z + Input.GetAxis ("Mouse Y");
-		if (cursorXpos > 1.0f) {
-			cursorXpos = 1.0f;
-		}
-		if (cursorXpos < -1.0f) {
-			cursorXpos = -1.0f;
-		}
-		if (cursorZpos > 1.0f) {
-			cursorZpos = 1.0f;
-		}
-		if (cursorZpos < -1.0f) {
-			cursorZpos = -1.0f;
-		}
-		cur.localPosition = new Vector3 (cursorXpos, 0, cursorZpos);
+		cur.localPosition = new Vector3 (cursorXpos, 0, cursorZpos).normalized * 1.25f;
 
 		if (Input.GetKeyDown(KeyCode.Mouse0)) {
 			var obj = Instantiate(bomb, cursor.transform.position, Quaternion.identity) as GameObject;

@@ -12,6 +12,7 @@ GameObject:
   - 135: {fileID: 13515864}
   - 23: {fileID: 2315522}
   - 54: {fileID: 5467542}
+  - 114: {fileID: 11448808}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -79,6 +80,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &11448808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770fc364c296a4c87a0add4b6a2679cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
 --- !u!135 &13515864
 SphereCollider:
   m_ObjectHideFlags: 1
