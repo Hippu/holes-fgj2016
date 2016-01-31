@@ -26,14 +26,15 @@ public class Player : MonoBehaviour
 		var cursorpos = transform.InverseTransformPoint (cur.position);
 		cursorpos.x = cursorpos.x + Input.GetAxis ("Mouse X") * 0.2f;
 		cursorpos.z = cursorpos.z + Input.GetAxis ("Mouse Y") * 0.2f;
-		var loc_cursorpos  = new Vector3 (cursorpos.x, 0, cursorpos.z).normalized;
+		var loc_cursorpos  = new Vector3 (cursorpos.x, 0, cursorpos.z).normalized * 0.5f;
 		var world_cursorpos = transform.TransformPoint (loc_cursorpos);
 		cur.position = world_cursorpos;
 
-		if (GetComponent<Rigidbody> ().velocity.sqrMagnitude < 0.000005f) {
+		if (0.1f < Mathf.Abs(Input.GetAxis ("Mouse X") + Input.GetAxis("Mouse Y"))) {
 			transform.LookAt (cur);
 		}
 
+   
 		if (Input.GetKeyDown(KeyCode.Mouse0) && canBomb) {
 			var obj = Instantiate(bomb, cursor.transform.position, Quaternion.identity) as GameObject;
 			obj.transform.rotation = transform.rotation;
