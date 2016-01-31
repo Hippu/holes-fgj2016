@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Mouse0) && canBomb) {
 			var obj = Instantiate(bomb, cursor.transform.position, Quaternion.identity) as GameObject;
 			obj.transform.rotation = transform.rotation;
-			obj.GetComponent<Rigidbody> ().velocity = transform.position + transform.InverseTransformPoint(cur.position) * 10.0f;;
+            obj.GetComponent<Rigidbody>().velocity = (cur.position - transform.position).normalized * obj.GetComponent<Bomb>().speed;
 		}
 			
 	}
