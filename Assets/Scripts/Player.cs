@@ -47,7 +47,8 @@ public class Player : MonoBehaviour
 	{
 		var movDelta = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical")) * speed;
 		var t = this.GetComponent<Transform> ();
-		transform.position = new Vector3 (transform.position.x + movDelta.x, transform.position.y, transform.position.z + movDelta.z); 
+		t.position = new Vector3 (t.position.x + movDelta.x, t.position.y, t.position.z + movDelta.z);
+		// cursor.transform.Translate(GetComponent<Rigidbody> ().velocity * Time.fixedDeltaTime);
 	}
 
 

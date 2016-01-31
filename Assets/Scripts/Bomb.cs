@@ -7,7 +7,7 @@ public class Bomb : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
 	
 	// Update is called once per frame
@@ -19,7 +19,15 @@ public class Bomb : MonoBehaviour {
 
 	void OnCollisionEnter (Collision col) {
 		if (col.gameObject.GetComponent<Ball>() != null) {
-			Destroy (this.gameObject);
+			var obj = col.gameObject;
+			obj.GetComponent<Rigidbody> ().AddForce (GetComponent<Rigidbody> ().velocity.normalized * 250);
+			GetComponent<Collider> ().enabled = false;
+			foreach (Renderer r in GetComponentsInChildren<Renderer>()) {
+				r.enabled = false;
+			}
+			var audio = GetComponent<AudioSource> ();
+			audio.PlayOneShot (audio.clip);
+			Destroy (this.gameObject, audio.clip.length);
 		}
 	}
 }

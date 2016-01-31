@@ -10,6 +10,7 @@ public class Ball : MonoBehaviour
 	void Start ()
 	{
 		this.origLocation = this.transform.localPosition;
+		Physics.IgnoreLayerCollision (8, 9);
 	}
 	
 	// Update is called once per frame
@@ -19,9 +20,13 @@ public class Ball : MonoBehaviour
 			this.Reset();
 		}
 
-		if (transform.position.y > 2) {
+		if (transform.position.y > origLocation.y + 0.1f) {
 			var rb = gameObject.GetComponent<Rigidbody> ();
 			rb.velocity = new Vector3 (rb.velocity.x, 0, rb.velocity.z);
+		}
+
+		if (Input.GetKeyDown (KeyCode.R)) {
+			this.Reset ();
 		}
 	}
 
@@ -30,6 +35,9 @@ public class Ball : MonoBehaviour
 		this.transform.localPosition = origLocation;
 		GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		GetComponent<Rigidbody> ().angularVelocity = Vector3.zero;
-		Physics.IgnoreCollision(GetComponent<Collider>(), GameObject.FindWithTag("floor").GetComponent<Collider>(), false);
+		foreach (GameObject floor in GameObject.FindGameObjectsWithTag("floor")) {
+			Physics.IgnoreCollision (GetComponent<Collider> (), floor.GetComponent<Collider> (), false);
+		}
+		
 	}
 }
