@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11419332}
   - 54: {fileID: 5489714}
   - 135: {fileID: 13591014}
-  - 108: {fileID: 10847664}
+  - 108: {fileID: 10888082}
   m_Layer: 8
   m_Name: Ball
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178438}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -4.76, y: 0.23, z: 0.75}
+  m_LocalPosition: {x: -0.9, y: 0.3, z: -0.28}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,7 +99,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!108 &10847664
+--- !u!108 &10888082
 Light:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

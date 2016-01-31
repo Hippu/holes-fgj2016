@@ -5,12 +5,13 @@ public class Ball : MonoBehaviour
 {
 
 	private Vector3 origLocation;
-
+	private GameObject[] floors;
 	// Use this for initialization
 	void Start ()
 	{
 		this.origLocation = this.transform.localPosition;
 		Physics.IgnoreLayerCollision (8, 9);
+		floors = GameObject.FindGameObjectsWithTag ("floor");
 	}
 	
 	// Update is called once per frame
@@ -35,8 +36,8 @@ public class Ball : MonoBehaviour
 		this.transform.localPosition = origLocation;
 		GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		GetComponent<Rigidbody> ().angularVelocity = Vector3.zero;
-		foreach (GameObject floor in GameObject.FindGameObjectsWithTag("floor")) {
-			Physics.IgnoreCollision (GetComponent<Collider> (), floor.GetComponent<Collider> (), false);
+		for (int i = 0; i < floors.Length; i++) {
+			Physics.IgnoreCollision(floors[i].GetComponent<Collider>(), GetComponent<Collider>(), false);
 		}
 		
 	}

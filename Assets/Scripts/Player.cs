@@ -24,8 +24,8 @@ public class Player : MonoBehaviour
 	{
 		var cur = cursor.transform;
 		var cursorpos = transform.InverseTransformPoint (cur.position);
-		cursorpos.x = cursorpos.x + Input.GetAxis ("Mouse X") * 0.2f;
-		cursorpos.z = cursorpos.z + Input.GetAxis ("Mouse Y") * 0.2f;
+		cursorpos.x = cursorpos.x + Input.GetAxis ("Mouse X") * 0.1f;
+		cursorpos.z = cursorpos.z + Input.GetAxis ("Mouse Y") * 0.1f;
 		var loc_cursorpos  = new Vector3 (cursorpos.x, 0, cursorpos.z).normalized * 0.5f;
 		var world_cursorpos = transform.TransformPoint (loc_cursorpos);
 		cur.position = world_cursorpos;
